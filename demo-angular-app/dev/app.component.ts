@@ -1,31 +1,38 @@
-import {Component} from 'angular2/core';
+import { Component } from 'angular2/core';
+import { ContactListComponent } from "./contacts/contact-list.component";
+import { ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
+
+//<!--[class.clicked]="contact.firstName === 'c' && showDetail === true"-->
 
 @Component({
     selector: 'app',
     template: `
-        <h3 
-        (click)="onSelect()"
-        [class.clicked]="showDetail === true"
-        > {{contact.firstName}} {{contact.lastName}} </h3>
+    <header>
+        <nav>
+            <a [routerLink]="['Contacts']">Contacts</a>
+            <a [routerLink]="['NewContact']">New Contact</a>
+        </nav>
+    </header>
 
-        <input type="text" [(ngModel)]="contact.firstName" />    
-        <div *ngIf="showDetail === true">
-            phone number: {{contact.phone}} <br>
-            Email: {{contact.email}} 
-        </div>
+    <div class="main">
+        <router-outlet></router-outlet>
+    </div>
+        
+
+
 
     `,
-    styleUrls: ["../src/css/app.css"]
+    styleUrls: ["../src/css/app.css"],
+    directives: [ContactListComponent]
 })
+@RouteConfig(
+    [
+        {path: '/contacts', name: 'Contacts', component: ContactListComponent},
+        {path: '/newcontact', name: 'Newcontact', component: ContactListComponent}
+    ]
+)
 export class AppComponent {
-    public contact = {firstName: "Carlos", lastName: "Siches", phone: "123 456 789", email: "csiches@live.com" }
-    public showDetail = false;
 
-    onSelect()
-    {
-        this.showDetail = true;
-
-    }
 
 
 }
