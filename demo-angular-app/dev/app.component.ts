@@ -1,6 +1,10 @@
-import { Component } from 'angular2/core';
 import { ContactListComponent } from "./contacts/contact-list.component";
-import { ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
+import { NewContactComponent } from "./contacts/new-contact.component";
+
+import { Component, OnInit } from "angular2/core";
+import { HTTP_PROVIDERS } from "angular2/http";
+//import 'rxjs/Rx';   // Load all features
+import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/router';
 
 //<!--[class.clicked]="contact.firstName === 'c' && showDetail === true"-->
 
@@ -23,12 +27,13 @@ import { ROUTER_DIRECTIVES, RouteConfig} from 'angular2/router';
 
     `,
     styleUrls: ["../src/css/app.css"],
-    directives: [ContactListComponent]
+    directives: [ContactListComponent,NewContactComponent,ROUTER_DIRECTIVES],
+    providers: [HTTP_PROVIDERS, ROUTER_PROVIDERS]
 })
 @RouteConfig(
     [
-        {path: '/contacts', name: 'Contacts', component: ContactListComponent},
-        {path: '/newcontact', name: 'Newcontact', component: ContactListComponent}
+        {path: '/contact', name: 'Contacts', component: ContactListComponent, useAsDefault: true},
+        {path: '/newcontact', name: 'NewContact', component: NewContactComponent}
     ]
 )
 export class AppComponent {
