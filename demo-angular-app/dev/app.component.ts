@@ -33,7 +33,8 @@ import { ROUTER_PROVIDERS, RouteConfig, ROUTER_DIRECTIVES } from 'angular2/route
 @RouteConfig(
     [
         {path: '/contact', name: 'Contacts', component: ContactListComponent, useAsDefault: true},
-        {path: '/newcontact', name: 'NewContact', component: NewContactComponent}
+        {path: '/newcontact', name: 'NewContact', component: NewContactComponent},
+        {path: '/newcontact/:lastName', name: 'NewContactFromContact', component: NewContactComponent}
     ]
 )
 export class AppComponent {
