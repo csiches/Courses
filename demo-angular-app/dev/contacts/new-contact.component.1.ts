@@ -1,3 +1,5 @@
+//WITHOUT FORM
+
 // import {Component, OnInit} from 'angular2/core';
 // import { ContactService } from "./contact.service";
 // //<!--[class.clicked]="contact.firstName === 'c' && showDetail === true"-->
